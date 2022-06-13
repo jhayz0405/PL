@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from "react";
+import Login from "./component/Login";
 function App() {
+  const [showLogin, setShowLogin] = useState(true);
+
+  function showNumber() {
+    console.log("abc");
+  }
+
+  function onHandleSignUp() {
+    setShowLogin(!showLogin);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {showLogin ? (
+        <Login
+          username="BSCS32A"
+          password="CCS123"
+          onHandleSignUp={onHandleSignUp}
+        />
+      ) : (
+        <div>
+          {" "}
+          sorry page not yet working{" "}
+          <button className="bg-blue-900 text-white" onClick={onHandleSignUp}>
+            {" "}
+            Back To Log in page
+          </button>
+        </div>
+      )}
+    </>
   );
 }
 
